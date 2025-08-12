@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather MCP - 料金プラン</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <!-- ヘッダー -->
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-blue-600">🌤️ Weather MCP</h1>
+            <button class="text-gray-600 hover:text-blue-600">ログイン</button>
+        </div>
+    </nav>
+
+    <!-- 価格セクション -->
+    <div class="max-w-6xl mx-auto px-4 py-16">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">
+                シンプルで透明な料金体系
+            </h2>
+            <p class="text-xl text-gray-600">
+                7日間の無料トライアル付き・いつでもキャンセル可能
+            </p>
+        </div>
+
+        <!-- プランカード -->
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Free Plan -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 relative">
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold mb-2">Free</h3>
+                    <div class="text-4xl font-bold mb-4">
+                        ¥0<span class="text-lg text-gray-500">/月</span>
+                    </div>
+                    <p class="text-gray-600">個人利用に最適</p>
+                </div>
+                
+                <ul class="space-y-3 mb-8">
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-green-500 mt-1 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                        </svg>
+                        <span>10回/日まで使用可能</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-green-500 mt-1 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                        </svg>
+                        <span>基本的な天気情報</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-green-500 mt-1 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                        </svg>
+                        <span>メールサポート</span>
+                    </li>
+                </ul>
+                
+                <button class="w-full py-3 px-6 bg-gray-100 text-gray-700 rounded-lg font-semibold hover:bg-gray-200 transition">
+                    現在のプラン
+                </button>
+            </div>
+
+            <!-- Basic Plan (人気) -->
+            <div class="bg-white rounded-2xl shadow-xl p-8 relative border-2 border-blue-500 transform scale-105">
+                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <span class="bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                        人気No.1
+                    </span>
+                </div>
+                
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold mb-2">Basic</h3>
+                    <div class="text-4xl font-bold mb-4">
+                        ¥1,500<span class="text-lg text-gray-500">/月</span>
+                    </div>
+                    <p class="text-gray-600">ビジネス利用に最適</p>
+                </div>
+                
+                <ul class="space-y-3 mb-8">
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-green-500 mt-1 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                        </svg>
+                        <span class="font-semibold">100回/日まで使用可能</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-green-500 mt-1 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                        </svg>
+                        <span class="font-semibold">7日間予報</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-green-500 mt-1 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                        </svg>
+                        <span>優先サポート</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-green-500 mt-1 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                        </svg>
+                        <span>APIキー即時発行</span>
+                    </li>
+                </ul>
+                
+                <button id="checkout-basic" class="w-full py-3 px-6 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-lg font-semibold hover:shadow-lg transition transform hover:scale-105">
+                    7日間無料で始める
+                </button>
+            </div>
+
+            <!-- Pro Plan -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 relative">
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold mb-2">Pro</h3>
+                    <div class="text-4xl font-bold mb-4">
+                        ¥3,000<span class="text-lg text-gray-500">/月</span>
+                    </div>
+                    <p class="text-gray-600">大規模利用向け</p>
+                </div>
+                
+                <ul class="space-y-3 mb-8">
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-green-500 mt-1 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                        </svg>
+                        <span class="font-semibold">無制限使用</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-green-500 mt-1 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                        </svg>
+                        <span class="font-semibold">全機能アクセス</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-green-500 mt-1 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                        </svg>
+                        <span>専用サポート</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-green-500 mt-1 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                        </svg>
+                        <span>SLA保証</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-green-500 mt-1 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+                        </svg>
+                        <span>カスタム統合</span>
+                    </li>
+                </ul>
+                
+                <button id="checkout-pro" class="w-full py-3 px-6 bg-gray-800 text-white rounded-lg font-semibold hover:bg-gray-900 transition">
+                    お問い合わせ
+                </button>
+            </div>
+        </div>
+
+        <!-- FAQ -->
+        <div class="mt-20">
+            <h3 class="text-2xl font-bold text-center mb-10">よくある質問</h3>
+            
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="bg-white rounded-lg p-6">
+                    <h4 class="font-semibold mb-2">無料トライアルはありますか？</h4>
+                    <p class="text-gray-600">はい、Basicプラン以上は7日間の無料トライアルがあります。クレジットカードの登録は必要ですが、トライアル期間中はいつでもキャンセル可能です。</p>
+                </div>
+                
+                <div class="bg-white rounded-lg p-6">
+                    <h4 class="font-semibold mb-2">支払い方法は？</h4>
+                    <p class="text-gray-600">クレジットカード（Visa, Mastercard, Amex）での月額自動引き落としとなります。請求書払いをご希望の企業様はお問い合わせください。</p>
+                </div>
+                
+                <div class="bg-white rounded-lg p-6">
+                    <h4 class="font-semibold mb-2">プランの変更はできますか？</h4>
+                    <p class="text-gray-600">はい、いつでもアップグレード・ダウングレードが可能です。日割り計算で調整されます。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Stripe初期化
+        const stripe = Stripe('pk_test_xxxxx'); // 実際の公開キーに置き換え
+
+        // Basicプランチェックアウト
+        document.getElementById('checkout-basic').addEventListener('click', async () => {
+            const response = await fetch('/api/create-checkout-session', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    plan: 'basic',
+                    userId: getUserId(), // 実装必要
+                    email: getUserEmail() // 実装必要
+                })
+            });
+
+            const { checkoutUrl } = await response.json();
+            window.location.href = checkoutUrl;
+        });
+
+        // Proプランお問い合わせ
+        document.getElementById('checkout-pro').addEventListener('click', () => {
+            window.location.href = '/contact?plan=pro';
+        });
+
+        // ユーザーID取得（実装必要）
+        function getUserId() {
+            return localStorage.getItem('userId') || 'anonymous';
+        }
+
+        function getUserEmail() {
+            return localStorage.getItem('userEmail') || '';
+        }
+    </script>
+</body>
+</html>

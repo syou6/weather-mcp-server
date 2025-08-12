@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "weather": {
+      "command": "node",
+      "args": [
+        "/Users/sho/mcp-app/weather-mcp-server/dist/index.js"
+      ],
+      "env": {
+        "WEATHER_API_KEY": "demo_key"
+      }
+    }
+  }
+}

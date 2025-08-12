@@ -1,0 +1,40 @@
+// Prisma Schema for Payment System
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id                 String    @id @default(cuid())
+  email              String    @unique
+  apiKey             String?   @unique
+  plan               String    @default("free") // free, basic, pro
+  subscriptionId     String?   @unique
+  subscriptionStatus String?   // active, past_due, cancelled
+  customerId         String?   @unique // Stripe customer ID
+  validUntil         DateTime?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  usage Usage[]
+  
+  @@index([apiKey])
+  @@index([email])
+}
+
+model Usage {
+  id        String   @id @default(cuid())
+  userId    String
+  tool      String   // weather, forecast, etc
+  timestamp DateTime @default(now())
+  metadata  Json?    // 追加データ
+
+  user User @relation(fields: [userId], references: [id])
+  
+  @@index([userId, timestamp])
+}
