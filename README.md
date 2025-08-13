@@ -84,27 +84,35 @@ Claude: 気温18°C、晴れです。
 
 ## 🚀 今すぐ始める
 
-### 1. MCPサーバーをインストール
+### 方法1: ソースからビルド
 ```bash
-cd weather-mcp-server
+# クローン
+git clone https://github.com/syou6/weather-mcp-server.git
+cd weather-mcp-server/weather-mcp-server
 npm install
 npm run build
 ```
 
-### 2. Claude Desktopに設定追加
+### 方法2: Claude Codeで設定
+```bash
+# Claude Codeに追加
+claude mcp add weather "node $(pwd)/dist/index.js"
+```
+
+### 設定ファイル例（claude_desktop_config.json）
 ```json
 {
   "mcpServers": {
     "weather": {
       "command": "node",
-      "args": ["/path/to/weather-mcp-server/dist/index.js"]
+      "args": ["/Users/your-name/weather-mcp-server/weather-mcp-server/dist/index.js"]
     }
   }
 }
 ```
 
 ### 3. 使ってみる
-Claude Desktopを再起動して「東京の天気を教えて」と話しかけるだけ！
+Claude Codeを再起動して「東京の天気を教えて」と話しかけるだけ！
 
 ## 📊 実際の収益例
 
@@ -138,10 +146,11 @@ Month 2: 口コミで100人に増加
 
 - [MCP公式ドキュメント](https://modelcontextprotocol.io)
 - [Stripe決済統合ガイド](https://stripe.com/docs)
-- [Claude Desktop設定方法](https://claude.ai/desktop)
+- [このプロジェクトのGitHub](https://github.com/syou6/weather-mcp-server)
 
 ---
 
-**質問・サポート**: Issues欄でお気軽にどうぞ！
+**開発者**: [@syou6](https://github.com/syou6)
+**質問・サポート**: [Issues](https://github.com/syou6/weather-mcp-server/issues)でお気軽にどうぞ！
 
 ⭐ このプロジェクトが役立ったら、スターをお願いします！
